@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Defines the character encoding used by the webpage. -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the webpage responsive on phones, tablets and computers. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title displayed in the browser tab. -->
+    <title>JavaScript Fundamentals Practice</title>
+
+
+    <style>
+
+        /* ===============================
+           GLOBAL STYLING
+           =============================== */
+
+        /* Removes default browser spacing and makes sizing easier. */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* Styles the entire webpage. */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+
+        /* ===============================
+           HEADER
+           =============================== */
+
+        /* Styles the top header. */
+        header {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+
+        /* Styles the main heading. */
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+
+        /* Styles the header description. */
+        header p {
+            color: #d1d5db;
+            font-size: 16px;
+        }
+
+
+        /* ===============================
+           MAIN CONTAINER
+           =============================== */
+
+        /* Controls the width of the main content. */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+
+        /* Styles the section heading. */
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+
+        /* ===============================
+           PROGRAM CARDS
+           =============================== */
+
+        /* Creates a responsive grid for all programs. */
+        .program-grid {
+            display: grid;
+
+            /* Automatically adjusts the number of columns. */
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(250px, 1fr)
+            );
+
+            /* Adds space between cards. */
+            gap: 20px;
+        }
+
+
+        /* Styles each program card. */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            /* Adds a small shadow around cards. */
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+
+            /* Smooth hover animation. */
+            transition: transform 0.2s;
+        }
+
+
+        /* Moves the card slightly upward when hovered. */
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+
+        /* Styles the program number. */
+        .program-number {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+
+        /* Styles program titles. */
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+
+        /* Styles program descriptions. */
+        .card p {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+
+        /* ===============================
+           BUTTONS
+           =============================== */
+
+        /* General button styling. */
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+
+        /* Button hover effect. */
+        button:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* ===============================
+           PROGRAM AREA
+           =============================== */
+
+        /* Area where selected programs appear. */
+        #programArea {
+            margin-top: 40px;
+        }
+
+
+        /* Input fields. */
+        input,
+        select,
+        textarea {
+            width: 100%;
+            max-width: 400px;
+            padding: 11px;
+            margin: 8px 0 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+
+        /* Makes textarea taller. */
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+
+        /* Labels above input fields. */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+
+        /* Result box. */
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef2ff;
+            border-radius: 8px;
+            font-weight: bold;
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+
+        /* Close button. */
+        .close-btn {
+            background: #dc2626;
+            margin-left: 8px;
+        }
+
+
+        /* Close button hover effect. */
+        .close-btn:hover {
+            background: #b91c1c;
+        }
+
+
+        /* ===============================
+           FOOTER
+           =============================== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+
+    <header>
+
+        <!-- Main website heading. -->
+        <h1>JavaScript Fundamentals</h1>
+
+        <!-- Short website description. -->
+        <p>
+            Interactive JavaScript Practice Programs
+        </p>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+
+    <main class="container">
+
+
+        <!-- Section heading. -->
+        <h2 class="section-title">
+            15 JavaScript Programs
+        </h2>
+
+
+        <!-- ==========================================
+             PROGRAM CARDS
+             ========================================== -->
+
+        <div class="program-grid">
+
+
+            <!-- PROGRAM 1 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 1
+                </div>
+
+                <h3>Simple Calculator</h3>
+
+                <p>
+                    Perform addition, subtraction,
+                    multiplication and division.
+                </p>
+
+                <button onclick="showCalculator()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 2 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 2
+                </div>
+
+                <h3>Swap Two Numbers</h3>
+
+                <p>
+                    Swap two numbers without using
+                    a third variable.
+                </p>
+
+                <button onclick="showSwap()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 3 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 3
+                </div>
+
+                <h3>Simple Interest</h3>
+
+                <p>
+                    Calculate simple interest using
+                    principal, rate and time.
+                </p>
+
+                <button onclick="showInterest()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 4 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 4
+                </div>
+
+                <h3>Even or Odd</h3>
+
+                <p>
+                    Check whether a number is even
+                    or odd.
+                </p>
+
+                <button onclick="showEvenOdd()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 5 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 5
+                </div>
+
+                <h3>Largest of Three</h3>
+
+                <p>
+                    Find the largest of three numbers
+                    using if-else.
+                </p>
+
+                <button onclick="showLargestThree()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 6 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 6
+                </div>
+
+                <h3>Grade Calculator</h3>
+
+                <p>
+                    Calculate grade based on marks.
+                </p>
+
+                <button onclick="showGrade()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 7 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 7
+                </div>
+
+                <h3>Leap Year Checker</h3>
+
+                <p>
+                    Check whether a year is a leap year.
+                </p>
+
+                <button onclick="showLeapYear()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 8 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 8
+                </div>
+
+                <h3>Multiplication Table</h3>
+
+                <p>
+                    Generate a multiplication table
+                    from 1 to 10.
+                </p>
+
+                <button onclick="showTable()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 9 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 9
+                </div>
+
+                <h3>Sum of Digits</h3>
+
+                <p>
+                    Find the sum of all digits in
+                    a number.
+                </p>
+
+                <button onclick="showSumDigits()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 10 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 10
+                </div>
+
+                <h3>Reverse a Number</h3>
+
+                <p>
+                    Reverse the digits of a number.
+                </p>
+
+                <button onclick="showReverse()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 11 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 11
+                </div>
+
+                <h3>Prime Number Checker</h3>
+
+                <p>
+                    Check whether a number is prime.
+                </p>
+
+                <button onclick="showPrime()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 12 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 12
+                </div>
+
+                <h3>Fibonacci Series</h3>
+
+                <p>
+                    Generate the first N Fibonacci terms.
+                </p>
+
+                <button onclick="showFibonacci()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 13 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 13
+                </div>
+
+                <h3>Palindrome</h3>
+
+                <p>
+                    Check whether a number or string
+                    is a palindrome.
+                </p>
+
+                <button onclick="showPalindrome()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 14 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 14
+                </div>
+
+                <h3>Largest Array Element</h3>
+
+                <p>
+                    Find the largest value in an array.
+                </p>
+
+                <button onclick="showLargestArray()">
+                    Open Program
+                </button>
+
+            </div>
+
+
+            <!-- PROGRAM 15 -->
+
+            <div class="card">
+
+                <div class="program-number">
+                    Program 15
+                </div>
+
+                <h3>Count Vowels</h3>
+
+                <p>
+                    Count vowels in a given string.
+                </p>
+
+                <button onclick="showVowels()">
+                    Open Program
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             PROGRAM OUTPUT AREA
+             ========================================== -->
+
+        <!-- Selected program interfaces will appear here. -->
+
+        <div id="programArea"></div>
+
+
+    </main>
+
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+
+    <footer>
+
+        <p>
+            JavaScript Fundamentals Practice
+        </p>
+
+    </footer>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           HELPER FUNCTION
+           ===================================================== */
+
+        /*
+            This function places HTML inside the program area.
+            Every program uses it to display its interface.
+        */
+
+        function displayProgram(html) {
+
+            // Find the program area.
+            const area =
+                document.getElementById("programArea");
+
+            // Insert the supplied HTML.
+            area.innerHTML = html;
+
+            // Scroll down so the user can see the program.
+            area.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+
+        /*
+            This function clears the program area.
+        */
+
+        function closeProgram() {
+
+            // Remove the currently displayed program.
+            document.getElementById(
+                "programArea"
+            ).innerHTML = "";
+        }
+
+
+        /* =====================================================
+           PROGRAM 1 — SIMPLE CALCULATOR
+           ===================================================== */
+
+        function showCalculator() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Simple Calculator</h2>
+
+                    <label>First Number</label>
+
+                    <input
+                        type="number"
+                        id="calcNum1"
+                        placeholder="Enter first number"
+                    >
+
+                    <label>Operator</label>
+
+                    <select id="calcOperator">
+
+                        <option value="+">Addition (+)</option>
+
+                        <option value="-">Subtraction (-)</option>
+
+                        <option value="*">Multiplication (*)</option>
+
+                        <option value="/">Division (/)</option>
+
+                    </select>
+
+                    <label>Second Number</label>
+
+                    <input
+                        type="number"
+                        id="calcNum2"
+                        placeholder="Enter second number"
+                    >
+
+                    <button onclick="calculate()">
+                        Calculate
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="calcResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function calculate() {
+
+            // Convert first input to a number.
+            const num1 =
+                Number(
+                    document.getElementById(
+                        "calcNum1"
+                    ).value
+                );
+
+            // Convert second input to a number.
+            const num2 =
+                Number(
+                    document.getElementById(
+                        "calcNum2"
+                    ).value
+                );
+
+            // Get selected operator.
+            const operator =
+                document.getElementById(
+                    "calcOperator"
+                ).value;
+
+            // Variable that stores the answer.
+            let result;
+
+
+            // Perform addition.
+            if (operator === "+") {
+
+                result = num1 + num2;
+            }
+
+            // Perform subtraction.
+            else if (operator === "-") {
+
+                result = num1 - num2;
+            }
+
+            // Perform multiplication.
+            else if (operator === "*") {
+
+                result = num1 * num2;
+            }
+
+            // Perform division.
+            else if (operator === "/") {
+
+                // Prevent division by zero.
+                if (num2 === 0) {
+
+                    result =
+                        "Cannot divide by zero.";
+
+                } else {
+
+                    result = num1 / num2;
+                }
+            }
+
+
+            // Display result.
+            document.getElementById(
+                "calcResult"
+            ).innerText =
+                "Result: " + result;
+        }
+
+
+        /* =====================================================
+           PROGRAM 2 — SWAP TWO NUMBERS
+           ===================================================== */
+
+        function showSwap() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Swap Two Numbers</h2>
+
+                    <label>First Number</label>
+
+                    <input
+                        type="number"
+                        id="swapNum1"
+                        placeholder="Enter first number"
+                    >
+
+                    <label>Second Number</label>
+
+                    <input
+                        type="number"
+                        id="swapNum2"
+                        placeholder="Enter second number"
+                    >
+
+                    <button onclick="swapNumbers()">
+                        Swap
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="swapResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function swapNumbers() {
+
+            // Get first number.
+            let a =
+                Number(
+                    document.getElementById(
+                        "swapNum1"
+                    ).value
+                );
+
+            // Get second number.
+            let b =
+                Number(
+                    document.getElementById(
+                        "swapNum2"
+                    ).value
+                );
+
+
+            /*
+                Swap values without using
+                a third variable.
+            */
+
+            [a, b] = [b, a];
+
+
+            // Display swapped values.
+            document.getElementById(
+                "swapResult"
+            ).innerText =
+                "After swapping:\n" +
+                "First Number: " + a +
+                "\nSecond Number: " + b;
+        }
+
+
+        /* =====================================================
+           PROGRAM 3 — SIMPLE INTEREST
+           ===================================================== */
+
+        function showInterest() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Simple Interest Calculator</h2>
+
+                    <label>Principal</label>
+
+                    <input
+                        type="number"
+                        id="principal"
+                        placeholder="Enter principal"
+                    >
+
+                    <label>Rate (%)</label>
+
+                    <input
+                        type="number"
+                        id="rate"
+                        placeholder="Enter rate"
+                    >
+
+                    <label>Time</label>
+
+                    <input
+                        type="number"
+                        id="time"
+                        placeholder="Enter time"
+                    >
+
+                    <button onclick="calculateInterest()">
+                        Calculate
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="interestResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function calculateInterest() {
+
+            // Get principal.
+            const p =
+                Number(
+                    document.getElementById(
+                        "principal"
+                    ).value
+                );
+
+            // Get rate.
+            const r =
+                Number(
+                    document.getElementById(
+                        "rate"
+                    ).value
+                );
+
+            // Get time.
+            const t =
+                Number(
+                    document.getElementById(
+                        "time"
+                    ).value
+                );
+
+
+            // Apply SI = (P × R × T) / 100.
+            const si =
+                (p * r * t) / 100;
+
+
+            // Display result.
+            document.getElementById(
+                "interestResult"
+            ).innerText =
+                "Simple Interest: " + si;
+        }
+
+
+        /* =====================================================
+           PROGRAM 4 — EVEN OR ODD
+           ===================================================== */
+
+        function showEvenOdd() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Even or Odd</h2>
+
+                    <label>Enter Number</label>
+
+                    <input
+                        type="number"
+                        id="evenNumber"
+                        placeholder="Enter number"
+                    >
+
+                    <button onclick="checkEvenOdd()">
+                        Check
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="evenResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function checkEvenOdd() {
+
+            // Get number.
+            const number =
+                Number(
+                    document.getElementById(
+                        "evenNumber"
+                    ).value
+                );
+
+
+            // Check remainder when divided by 2.
+            if (number % 2 === 0) {
+
+                document.getElementById(
+                    "evenResult"
+                ).innerText =
+                    number + " is Even.";
+
+            } else {
+
+                document.getElementById(
+                    "evenResult"
+                ).innerText =
+                    number + " is Odd.";
+            }
+        }
+
+
+        /* =====================================================
+           PROGRAM 5 — LARGEST OF THREE
+           ===================================================== */
+
+        function showLargestThree() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Largest of Three Numbers</h2>
+
+                    <input
+                        type="number"
+                        id="large1"
+                        placeholder="First number"
+                    >
+
+                    <input
+                        type="number"
+                        id="large2"
+                        placeholder="Second number"
+                    >
+
+                    <input
+                        type="number"
+                        id="large3"
+                        placeholder="Third number"
+                    >
+
+                    <button onclick="findLargestThree()">
+                        Find Largest
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="largeResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function findLargestThree() {
+
+            // Get three numbers.
+            const a =
+                Number(
+                    document.getElementById("large1").value
+                );
+
+            const b =
+                Number(
+                    document.getElementById("large2").value
+                );
+
+            const c =
+                Number(
+                    document.getElementById("large3").value
+                );
+
+
+            // Assume first number is largest.
+            let largest = a;
+
+
+            // Compare second number.
+            if (b > largest) {
+
+                largest = b;
+            }
+
+
+            // Compare third number.
+            if (c > largest) {
+
+                largest = c;
+            }
+
+
+            // Display largest number.
+            document.getElementById(
+                "largeResult"
+            ).innerText =
+                "Largest: " + largest;
+        }
+
+
+        /* =====================================================
+           PROGRAM 6 — GRADE CALCULATOR
+           ===================================================== */
+
+        function showGrade() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Grade Calculator</h2>
+
+                    <label>Marks</label>
+
+                    <input
+                        type="number"
+                        id="marks"
+                        min="0"
+                        max="100"
+                        placeholder="Enter marks"
+                    >
+
+                    <button onclick="calculateGrade()">
+                        Calculate Grade
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="gradeResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function calculateGrade() {
+
+            // Get marks.
+            const marks =
+                Number(
+                    document.getElementById(
+                        "marks"
+                    ).value
+                );
+
+
+            let grade;
+
+
+            // 90 or above = A.
+            if (marks >= 90) {
+
+                grade = "A";
+            }
+
+            // 75 to 89 = B.
+            else if (marks >= 75) {
+
+                grade = "B";
+            }
+
+            // 60 to 74 = C.
+            else if (marks >= 60) {
+
+                grade = "C";
+            }
+
+            // 40 to 59 = D.
+            else if (marks >= 40) {
+
+                grade = "D";
+            }
+
+            // Below 40 = Fail.
+            else {
+
+                grade = "Fail";
+            }
+
+
+            // Display grade.
+            document.getElementById(
+                "gradeResult"
+            ).innerText =
+                "Grade: " + grade;
+        }
+
+
+        /* =====================================================
+           PROGRAM 7 — LEAP YEAR
+           ===================================================== */
+
+        function showLeapYear() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Leap Year Checker</h2>
+
+                    <label>Year</label>
+
+                    <input
+                        type="number"
+                        id="year"
+                        placeholder="Enter year"
+                    >
+
+                    <button onclick="checkLeapYear()">
+                        Check
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="leapResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function checkLeapYear() {
+
+            // Get year.
+            const year =
+                Number(
+                    document.getElementById(
+                        "year"
+                    ).value
+                );
+
+
+            /*
+                A year is leap if:
+                divisible by 400 OR
+                divisible by 4 but not 100.
+            */
+
+            const leap =
+                (year % 400 === 0) ||
+                (
+                    year % 4 === 0 &&
+                    year % 100 !== 0
+                );
+
+
+            // Display result.
+            document.getElementById(
+                "leapResult"
+            ).innerText =
+                leap
+                    ? year + " is a Leap Year."
+                    : year + " is not a Leap Year.";
+        }
+
+
+        /* =====================================================
+           PROGRAM 8 — MULTIPLICATION TABLE
+           ===================================================== */
+
+        function showTable() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Multiplication Table</h2>
+
+                    <label>Enter Number</label>
+
+                    <input
+                        type="number"
+                        id="tableNumber"
+                        placeholder="Enter number"
+                    >
+
+                    <button onclick="generateTable()">
+                        Generate Table
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="tableResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function generateTable() {
+
+            // Get number.
+            const number =
+                Number(
+                    document.getElementById(
+                        "tableNumber"
+                    ).value
+                );
+
+
+            // Create an empty string.
+            let output = "";
+
+
+            // Loop from 1 to 10.
+            for (let i = 1; i <= 10; i++) {
+
+                // Add each multiplication result.
+                output +=
+                    number +
+                    " × " +
+                    i +
+                    " = " +
+                    (number * i) +
+                    "\n";
+            }
+
+
+            // Display table.
+            document.getElementById(
+                "tableResult"
+            ).innerText =
+                output;
+        }
+
+
+        /* =====================================================
+           PROGRAM 9 — SUM OF DIGITS
+           ===================================================== */
+
+        function showSumDigits() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Sum of Digits</h2>
+
+                    <label>Enter Number</label>
+
+                    <input
+                        type="number"
+                        id="sumNumber"
+                        placeholder="Example: 123"
+                    >
+
+                    <button onclick="sumDigits()">
+                        Calculate Sum
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="sumResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function sumDigits() {
+
+            // Get number as text.
+            const value =
+                document.getElementById(
+                    "sumNumber"
+                ).value;
+
+
+            // Remove negative sign if present.
+            const digits =
+                value.replace("-", "");
+
+
+            // Start sum at zero.
+            let sum = 0;
+
+
+            // Loop through every digit.
+            for (let digit of digits) {
+
+                // Convert digit to number and add it.
+                sum += Number(digit);
+            }
+
+
+            // Display sum.
+            document.getElementById(
+                "sumResult"
+            ).innerText =
+                "Sum of digits: " + sum;
+        }
+
+
+        /* =====================================================
+           PROGRAM 10 — REVERSE NUMBER
+           ===================================================== */
+
+        function showReverse() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Reverse a Number</h2>
+
+                    <label>Enter Number</label>
+
+                    <input
+                        type="number"
+                        id="reverseNumber"
+                        placeholder="Example: 123"
+                    >
+
+                    <button onclick="reverseNumber()">
+                        Reverse
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="reverseResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function reverseNumber() {
+
+            // Get number as text.
+            const number =
+                document.getElementById(
+                    "reverseNumber"
+                ).value;
+
+
+            // Reverse the characters.
+            const reversed =
+                number
+                    .split("")
+                    .reverse()
+                    .join("");
+
+
+            // Display reversed number.
+            document.getElementById(
+                "reverseResult"
+            ).innerText =
+                "Reversed: " + reversed;
+        }
+
+
+        /* =====================================================
+           PROGRAM 11 — PRIME NUMBER
+           ===================================================== */
+
+        function showPrime() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Prime Number Checker</h2>
+
+                    <label>Enter Number</label>
+
+                    <input
+                        type="number"
+                        id="primeNumber"
+                        placeholder="Enter number"
+                    >
+
+                    <button onclick="checkPrime()">
+                        Check Prime
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="primeResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function checkPrime() {
+
+            // Get number.
+            const number =
+                Number(
+                    document.getElementById(
+                        "primeNumber"
+                    ).value
+                );
+
+
+            // Assume the number is prime.
+            let isPrime = true;
+
+
+            // Numbers below 2 aren't prime.
+            if (number < 2) {
+
+                isPrime = false;
+            }
+
+
+            /*
+                Check divisibility only up to
+                the square root of the number.
+            */
+
+            for (
+                let i = 2;
+                i <= Math.sqrt(number);
+                i++
+            ) {
+
+                // If divisible, it isn't prime.
+                if (number % i === 0) {
+
+                    isPrime = false;
+
+                    break;
+                }
+            }
+
+
+            // Display result.
+            document.getElementById(
+                "primeResult"
+            ).innerText =
+                isPrime
+                    ? number + " is Prime."
+                    : number + " is Not Prime.";
+        }
+
+
+        /* =====================================================
+           PROGRAM 12 — FIBONACCI
+           ===================================================== */
+
+        function showFibonacci() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Fibonacci Series</h2>
+
+                    <label>Number of Terms</label>
+
+                    <input
+                        type="number"
+                        id="fibTerms"
+                        min="1"
+                        placeholder="Example: 6"
+                    >
+
+                    <button onclick="generateFibonacci()">
+                        Generate
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="fibResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function generateFibonacci() {
+
+            // Get number of terms.
+            const n =
+                Number(
+                    document.getElementById(
+                        "fibTerms"
+                    ).value
+                );
+
+
+            // First Fibonacci number.
+            let a = 0;
+
+
+            // Second Fibonacci number.
+            let b = 1;
+
+
+            // Store the output.
+            let output = "";
+
+
+            // Generate N terms.
+            for (let i = 0; i < n; i++) {
+
+                // Add current number.
+                output += a;
+
+
+                // Add space between numbers.
+                if (i < n - 1) {
+
+                    output += " ";
+                }
+
+
+                // Calculate next number.
+                const next = a + b;
+
+
+                // Move numbers forward.
+                a = b;
+                b = next;
+            }
+
+
+            // Display Fibonacci series.
+            document.getElementById(
+                "fibResult"
+            ).innerText =
+                output;
+        }
+
+
+        /* =====================================================
+           PROGRAM 13 — PALINDROME
+           ===================================================== */
+
+        function showPalindrome() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Palindrome Checker</h2>
+
+                    <label>Enter Number or String</label>
+
+                    <input
+                        type="text"
+                        id="palindromeInput"
+                        placeholder="Example: madam"
+                    >
+
+                    <button onclick="checkPalindrome()">
+                        Check
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="palindromeResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function checkPalindrome() {
+
+            // Get input.
+            const input =
+                document.getElementById(
+                    "palindromeInput"
+                ).value;
+
+
+            /*
+                Convert to lowercase and remove
+                spaces so that "Madam" works too.
+            */
+
+            const cleaned =
+                input
+                    .toLowerCase()
+                    .replace(/\s/g, "");
+
+
+            // Reverse the string.
+            const reversed =
+                cleaned
+                    .split("")
+                    .reverse()
+                    .join("");
+
+
+            // Compare original and reversed.
+            const isPalindrome =
+                cleaned === reversed;
+
+
+            // Display result.
+            document.getElementById(
+                "palindromeResult"
+            ).innerText =
+                isPalindrome
+                    ? "Palindrome"
+                    : "Not a Palindrome";
+        }
+
+
+        /* =====================================================
+           PROGRAM 14 — LARGEST ARRAY ELEMENT
+           ===================================================== */
+
+        function showLargestArray() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Largest Element in Array</h2>
+
+                    <label>
+                        Enter numbers separated by commas
+                    </label>
+
+                    <input
+                        type="text"
+                        id="arrayInput"
+                        placeholder="12, 45, 3, 89, 27"
+                    >
+
+                    <button onclick="findLargestArray()">
+                        Find Largest
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="arrayResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function findLargestArray() {
+
+            // Get text entered by the user.
+            const input =
+                document.getElementById(
+                    "arrayInput"
+                ).value;
+
+
+            /*
+                Split the string at commas and
+                convert every value to a number.
+            */
+
+            const numbers =
+                input
+                    .split(",")
+                    .map(Number);
+
+
+            // Assume first element is largest.
+            let largest = numbers[0];
+
+
+            // Loop through the array.
+            for (let i = 1; i < numbers.length; i++) {
+
+                // Compare current element.
+                if (numbers[i] > largest) {
+
+                    largest = numbers[i];
+                }
+            }
+
+
+            // Display largest value.
+            document.getElementById(
+                "arrayResult"
+            ).innerText =
+                "Largest Element: " + largest;
+        }
+
+
+        /* =====================================================
+           PROGRAM 15 — COUNT VOWELS
+           ===================================================== */
+
+        function showVowels() {
+
+            displayProgram(`
+
+                <div class="card">
+
+                    <h2>Count Vowels</h2>
+
+                    <label>Enter a String</label>
+
+                    <input
+                        type="text"
+                        id="vowelInput"
+                        placeholder="Example: Hello World"
+                    >
+
+                    <button onclick="countVowels()">
+                        Count Vowels
+                    </button>
+
+                    <button
+                        class="close-btn"
+                        onclick="closeProgram()">
+                        Close
+                    </button>
+
+                    <div
+                        id="vowelResult"
+                        class="result">
+                    </div>
+
+                </div>
+            `);
+        }
+
+
+        function countVowels() {
+
+            // Get input string.
+            const text =
+                document.getElementById(
+                    "vowelInput"
+                ).value;
+
+
+            // Convert string to lowercase.
+            const lowerText =
+                text.toLowerCase();
+
+
+            // Store vowels.
+            const vowels =
+                "aeiou";
+
+
+            // Start counter at zero.
+            let count = 0;
+
+
+            // Check every character.
+            for (let character of lowerText) {
+
+                // Check whether character is a vowel.
+                if (vowels.includes(character)) {
+
+                    count++;
+                }
+            }
+
+
+            // Display number of vowels.
+            document.getElementById(
+                "vowelResult"
+            ).innerText =
+                "Number of vowels: " + count;
+        }
+
+    </script>
+
+
+</body>
+
+</html>
