@@ -1,38 +1,53 @@
-.App {
+/* Overall page */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #222;
+}
+
+/* Main App container */
+#root {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Main heading/title */
+.title {
   text-align: center;
+  color: #1f3c88;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Project and year information */
+p {
+  font-size: 15px;
+  margin: 10px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Employee / Student box */
+.employee {
+  border: 1px solid #888;
+  padding: 18px 20px;
+  margin: 10px 0;
+  background-color: #fafafa;
+  border-radius: 2px;
+  transition: 0.2s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Small hover effect */
+.employee:hover {
+  border-color: #555;
+  background-color: #f5f7fa;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Text inside employee box */
+.employee p {
+  margin: 8px 0;
+  font-size: 15px;
 }
